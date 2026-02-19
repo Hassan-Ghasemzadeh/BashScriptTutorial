@@ -33,7 +33,7 @@ case $distro in
     ;;
 *)
     echo "Unknown Linux distribution"
-    echo "Please enter valid number"
+    echo "Please enter valid number!"
     exit 1;
     ;;
 
