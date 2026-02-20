@@ -7,3 +7,11 @@ then
     echo "Please try again"
     exit 1
 fi
+
+#check to see if rsync is installed or not
+if ! command -v rsync > /dev/null 2>&1
+then
+    echo "rsync should be installed"
+    echo "Use your package manager to install rsync"
+    exit 2
+fi
