@@ -8,4 +8,4 @@ then
     exit 1
 fi
 
-echo "You have $($lines-1) object in $1 directory"
+echo "You have $(($lines-1)) object in $1 directory"
