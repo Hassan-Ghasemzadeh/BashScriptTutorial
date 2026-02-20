@@ -12,6 +12,6 @@ fi
 if ! command -v rsync > /dev/null 2>&1
 then
     echo "rsync should be installed"
-    echo "Use your package manager to install rsync"
+    echo "Use your package manager to install rsync and then try again"
     exit 2
 fi
