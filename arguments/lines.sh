@@ -1,7 +1,7 @@
 #!/bin/bash
 
 lines=$(ls -lh | wc -l)
-if[ $# -ne 1 ]
+if [ $# -ne 1 ]
 then
     echo "This script requires exactly one directory path passed to it."
     echo "Please try again"
