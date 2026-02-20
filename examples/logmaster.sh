@@ -16,6 +16,7 @@ if [ $current_usage -gt $THRESHOLD ]
 then
     echo "Warning: Disk usage exceeded limit ($CURRENT_USAGE%)" >> "$REPORT_FILE"
 
+    # Find files larger than 50 MB in the specified path
     find "$LOG_DIR" -type f -name "*.log" -size +50M | while read -r file; do
         FILENAME=$(basename "$file")
         TIMESTAMP=$(date +%Y%m%d_%H%M%S)
