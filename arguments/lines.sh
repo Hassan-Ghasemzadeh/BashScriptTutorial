@@ -1,6 +1,6 @@
 #!/bin/bash
 
-lines=$(ls -lh | wc -l)
+lines=$(ls -lh $1 | wc -l)
 if [ $# -ne 1 ]
 then
     echo "This script requires exactly one directory path passed to it."
