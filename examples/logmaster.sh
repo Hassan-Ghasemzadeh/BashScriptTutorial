@@ -8,3 +8,5 @@ REPORT_FILE="/var/log/cleanup_report.log"
 
 #creates backup directory if not exists
 mkdir -p "$BACKUP_DIR"
+
+echo "Start of maintenance operations in $(date)" >> "$REPORT_FILE"
