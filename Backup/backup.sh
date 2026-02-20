@@ -15,3 +15,10 @@ then
     echo "Use your package manager to install rsync and then try again"
     exit 2
 fi
+
+#current date in YYYY-mm-dd format
+current_date=$(date +%Y-%m-%d)
+
+rsync_options="-vab --backup-dir=$2/$current_date --delete --dry-run"
+
+$(which rsync) $rsync_options $1 $2/current >> backup_$current_date.log 
