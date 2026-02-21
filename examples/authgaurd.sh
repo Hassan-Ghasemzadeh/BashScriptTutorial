@@ -23,3 +23,10 @@ awk '{
 sort | uniq -c | sort -nr | \
 awk -v limit="$threshold" '$i > limit { print "IP: " $2 " | Number of failed try $1 }' >> "$report"
 
+if [[ -s "$auth_log" ]]
+then
+    echo "[!] Potential threats detected. See report in $REPORT:"
+    cat "$report"
+else
+    echo "No suspicious items were found."
+fi
