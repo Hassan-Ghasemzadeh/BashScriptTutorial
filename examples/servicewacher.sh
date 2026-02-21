@@ -17,3 +17,19 @@ then
 else
     log_message "There is a problem with the website $url"
 fi
+
+if systemctl is-active --quiet "$service"
+then
+    log_message "The Service $service is running."
+else
+    log_message "The Service $service is stoped.try restarting the service..."
+
+    sudo systemctl restart "$service"
+
+    if systemctl is-active --quiet "$service"
+    then
+        log_message "The website is available (status 200)."
+    else
+        log_message "There is a problem with the website $url"
+    fi
+fi
