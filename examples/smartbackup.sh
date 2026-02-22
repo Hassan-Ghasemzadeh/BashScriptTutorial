@@ -35,3 +35,9 @@ if scp "$backup_path/$backup_name" "$remote_user@$remote_host:$remote_dir"
 else
     log_error "Error transferring file! Check network connection or SSH access."
 fi
+
+log_info "Cleaning up old archives..."
+
+find "$BACKUP_PATH" -type f -name "*.tar.gz" -mtime +7 -exec rm {} \;
+
+log_info "The operation was completed successfully."
