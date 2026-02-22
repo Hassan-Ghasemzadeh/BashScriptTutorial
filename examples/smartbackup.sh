@@ -14,3 +14,7 @@ backup_name="project_backup_$timestamp.tar.gz"
 log_info() { 
     echo -e "\e[32m[INFO]\e[0m $1" 
 }
+
+log_error(){
+    echo -e "\e[31m[ERROR]\e[0m $1"
+}
