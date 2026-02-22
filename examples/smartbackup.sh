@@ -18,3 +18,13 @@ log_info() {
 log_error(){
     echo -e "\e[31m[ERROR]\e[0m $1"
 }
+
+log_info "Starting backup process..."
+
+mkdir -p "$backup_path"
+
+if tar -czf "$backup_path/$backup_name" "$source_dir" 2>/dev/null
+    log_info "Backup file created successfully: $BACKUP_NAME"
+else
+    log_info "Error compressing files!"
+fi
