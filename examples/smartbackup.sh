@@ -29,3 +29,9 @@ else
     log_error "Error compressing files!"
 fi
 
+
+if scp "$backup_path/$backup_name" "$remote_user@$remote_host:$remote_dir"
+    log_info "The transfer was successful."
+else
+    log_error "Error transferring file! Check network connection or SSH access."
+fi
