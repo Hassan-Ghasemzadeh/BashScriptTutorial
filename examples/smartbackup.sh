@@ -8,3 +8,9 @@ remote_dir="/backup/storage"
 timestamp="$(date +%Y-%m-%d %H:%M:S)"
 backup_name="project_backup_$timestamp.tar.gz"
 
+# This function will echo the message and color it header in green
+# 32m=green,31m=red,33m=yellow,34m=blue,35m=purple,36m=cyan,37m=white,0m=default
+
+log_info() { 
+    echo -e "\e[32m[INFO]\e[0m $1" 
+}
