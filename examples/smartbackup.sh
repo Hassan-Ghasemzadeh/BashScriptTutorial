@@ -26,5 +26,6 @@ mkdir -p "$backup_path"
 if tar -czf "$backup_path/$backup_name" "$source_dir" 2>/dev/null
     log_info "Backup file created successfully: $BACKUP_NAME"
 else
-    log_info "Error compressing files!"
+    log_error "Error compressing files!"
 fi
+
