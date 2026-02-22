@@ -23,13 +23,14 @@ log_info "Starting backup process..."
 
 mkdir -p "$backup_path"
 
+# to backup the source dir and zip with gzip
 if tar -czf "$backup_path/$backup_name" "$source_dir" 2>/dev/null
     log_info "Backup file created successfully: $BACKUP_NAME"
 else
     log_error "Error compressing files!"
 fi
 
-
+# find the backuped files and remove them 
 if scp "$backup_path/$backup_name" "$remote_user@$remote_host:$remote_dir"
     log_info "The transfer was successful."
 else
