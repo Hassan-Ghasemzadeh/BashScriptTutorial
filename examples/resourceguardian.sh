@@ -31,3 +31,9 @@ log_msg(){
     local message=$2
     echo "$(date '+%Y-%m-%d %H:%M:%S') [$level]-$message" | tee -a "$LOG_FILE"
 }
+
+check_resource(){
+    log_message "INFO" "Checking for high-consuming processes (over $CPU_THRESHOLD%)..."
+
+    ps -h -eo pid,pcpu,comm --sort=-pcpu > "$TMP_FILE"
+}
