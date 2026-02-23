@@ -7,6 +7,8 @@
 # of the last command to exit with a non-zero status, or zero if no command exited with a non-zero status.
 set -euo pipefail
 
+# PS4: (prompt string 4) is the prompt used when the shell is in debug mode (set -x).
+export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 # IFS: (Internal Field Separator) is used by the shell to determine how to split a string into words.
 # By default, IFS is set to space, tab, and newline.
