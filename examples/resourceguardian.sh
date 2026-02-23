@@ -25,3 +25,9 @@ cleanup(){
 }
 
 trap cleanup EXIT
+
+log_msg(){
+    local level=$1
+    local message=$2
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [$level]-$message" | tee -a "$LOG_FILE"
+}
