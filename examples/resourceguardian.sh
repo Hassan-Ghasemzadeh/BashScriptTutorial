@@ -13,3 +13,7 @@ set -euo pipefail
 # Setting it to $'\n\t' means that only newlines and tabs will be used as delimiters,
 # which can help prevent issues with spaces in file names or other strings.
 IFS=$'\n\t'
+
+readonly GUARDIAN_THRESHOLD=80
+readonly LOG_FILE="/var/log/resource_guardian.log"
+readonly TMP_FILE=$(mktemp /tmp/guardian_XXXXXX)
