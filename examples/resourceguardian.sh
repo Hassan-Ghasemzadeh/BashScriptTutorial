@@ -8,4 +8,8 @@
 set -euo pipefail
 
 
+# IFS: (Internal Field Separator) is used by the shell to determine how to split a string into words.
+# By default, IFS is set to space, tab, and newline.
+# Setting it to $'\n\t' means that only newlines and tabs will be used as delimiters,
+# which can help prevent issues with spaces in file names or other strings.
 IFS=$'\n\t'
