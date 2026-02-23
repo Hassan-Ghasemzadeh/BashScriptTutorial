@@ -39,4 +39,22 @@ check_resource(){
     #pid:process id , pcpu: percent cpu , comm: command
     #-pcpu:from high to low like 15,12,9,3,2
     ps -h -eo pid,pcpu,comm --sort=-pcpu > "$TMP_FILE"
+
+    while read -r pid cpu comm
+    do
+        local cpu_int=${cpu%.*}
+        if [[ $cpu_int -ge $GUARDIAN_THRESHOLD ]]
+        then
+            log_message "WARNING" "Process $comm (PID: $pid) is consuming $cpu% CPU."
+        fi
+    done < <(head -n 5 "$TEMP_FILE")
+}
+main(){
+    if [[ $EUID -ne 0 ]]
+    then
+        log_message "ERROR" "This script must be run with sudo access."
+        exit 1
+    fi
+    check_resource
+    log_message "INFO" "Resource Guardian finished with success."
 }
