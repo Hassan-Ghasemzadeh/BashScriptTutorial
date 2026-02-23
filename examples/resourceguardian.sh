@@ -17,3 +17,9 @@ IFS=$'\n\t'
 readonly GUARDIAN_THRESHOLD=80
 readonly LOG_FILE="/var/log/resource_guardian.log"
 readonly TMP_FILE=$(mktemp /tmp/guardian_XXXXXX)
+
+
+# Ensure the temporary file is removed on exit
+cleanup(){
+    rm -f "$TMP_FILE"
+}
