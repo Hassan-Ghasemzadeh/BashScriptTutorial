@@ -58,3 +58,5 @@ main(){
     check_resource
     log_message "INFO" "Resource Guardian finished with success."
 }
+
+main "$@"
