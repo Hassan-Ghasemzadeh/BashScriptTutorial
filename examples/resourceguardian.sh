@@ -59,4 +59,6 @@ main(){
     log_message "INFO" "Resource Guardian finished with success."
 }
 
+
+# run main function with all the arguments passed to the script
 main "$@"
