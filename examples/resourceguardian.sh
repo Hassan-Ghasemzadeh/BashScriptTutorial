@@ -23,3 +23,5 @@ readonly TMP_FILE=$(mktemp /tmp/guardian_XXXXXX)
 cleanup(){
     rm -f "$TMP_FILE"
 }
+
+trap cleanup EXIT
