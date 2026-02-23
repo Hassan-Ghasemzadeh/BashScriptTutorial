@@ -35,5 +35,8 @@ log_msg(){
 check_resource(){
     log_message "INFO" "Checking for high-consuming processes (over $CPU_THRESHOLD%)..."
 
+    #process status -h(no header) to remove header -e(every) -o(format) to select the column we want
+    #pid:process id , pcpu: percent cpu , comm: command
+    #-pcpu:from high to low like 15,12,9,3,2
     ps -h -eo pid,pcpu,comm --sort=-pcpu > "$TMP_FILE"
 }
