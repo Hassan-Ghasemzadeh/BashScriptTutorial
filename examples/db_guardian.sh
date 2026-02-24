@@ -45,3 +45,25 @@ run_backup(){
         exit 1
     fi
 }
+
+main(){
+    while getopts "d:u:h" opt
+    do
+        case "$opt" in
+            d) DB_NAME="$OPTARG" ;;
+            u) DB_USER="$OPTARG" ;;
+            h) usage ;;
+            *) usage ;;
+        esac
+    done
+
+    if [[ -z "$DB_NAME" ]]
+    then
+        log_msg "ERROR" "Database name is required."
+        usage
+        exit 1
+    fi
+    check_dependencies
+    run_backup
+
+}
