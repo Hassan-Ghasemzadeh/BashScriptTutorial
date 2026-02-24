@@ -31,3 +31,17 @@ check_dependencies(){
         fi
     done
 }
+
+run_backup(){
+    local timestamp=$(date +%Y-%m-%d %H:%M:%S)
+    local backup_file="$BACKUP_DIR/${DB_NAME}_backup_$timestamp.sql.gz"
+    mkdir -p "$BACKUP_DIR"
+    log_msg "INFO" "Starting backup for database '$DB_NAME' at $timestamp"
+    if mysqldump -u "$DB_USER" -p --databases "$DB_NAME" | gzip > "$backup_file"
+    then
+        log_msg "INFO" "Backup successful: $backup_file"
+    else
+        log_msg "ERROR" "Backup failed for database '$DB_NAME'"
+        exit 1
+    fi
+}
