@@ -65,5 +65,6 @@ main(){
     fi
     check_dependencies
     run_backup
-
 }
+
+main "$@"
