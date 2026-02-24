@@ -13,3 +13,9 @@ usage(){
     echo "-d: (required) Name of the database to backup "
     echo "-u: (optional) Database user (default:Root)"
 }
+
+log_msg(){
+    $local=$1
+    $message=$2
+    echo "$(date '+%Y-%m-%d %H:%M:%S') -[\e[34m$local\e[0m]-$message"
+}
