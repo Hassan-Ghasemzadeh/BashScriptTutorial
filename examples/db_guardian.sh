@@ -19,3 +19,15 @@ log_msg(){
     $message=$2
     echo "$(date '+%Y-%m-%d %H:%M:%S') -[\e[34m$local\e[0m]-$message"
 }
+
+check_dependencies(){
+    local deps=("mysqldump" "gzip" "mysql")
+    for tool in "${deps[@]}"
+    do
+        if ! command -v "$tool" &> /dev/null
+        then
+            log_msg "ERROR" "Dependency '$tool' is not installed. Please install it and try again."
+            exit 1
+        fi
+    done
+}
